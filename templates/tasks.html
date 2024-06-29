@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasks</title>
+  </head>
+  <body>
+    <h1>Tasks</h1>
+    <form method="POST">
+      {{ form.csrf_token }}
+      {{ form.report_id.label }}<br>
+      {{ form.report_id }}<br>
+      {{ form.collector_id.label }}<br>
+      {{ form.collector_id }}<br>
+      {{ form.submit() }}
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Report ID</th>
+          <th>Collector ID</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+          <tr>
+            <td>{{ task.report_id }}</td>
+            <td>{{ task.collector_id }}</td>
+            <td>{{ task.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

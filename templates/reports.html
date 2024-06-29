@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reports</title>
+  </head>
+  <body>
+    <h1>Reports</h1>
+    <form method="POST" enctype="multipart/form-data">
+      {{ form.csrf_token }}
+      {{ form.image.label }}<br>
+      {{ form.image }}<br>
+      {{ form.description.label }}<br>
+      {{ form.description }}<br>
+      {{ form.location.label }}<br>
+      {{ form.location }}<br>
+      {{ form.submit() }}
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for report in reports %}
+          <tr>
+            <td><img src="{{ report.image }}" width="100"></td>
+            <td>{{ report.description }}</td>
+            <td>{{ report.location }}</td>
+            <td>{{ report.status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
